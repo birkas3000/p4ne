@@ -12,4 +12,5 @@ temperature = list(map(getvalue, wb['Data']['C'][1:]))
 
 pyplot.plot(years, action, label='Action')
 pyplot.plot(years, temperature, label='Temp')
+pyplot.title('Graph')
 pyplot.show()
