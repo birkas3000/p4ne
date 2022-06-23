@@ -13,6 +13,12 @@ class RandomNetwork(IPv4):
             strict = False
             )
 
+    def key_value(self):
+        return int(self.network_address) + (int(self.netmask) * 2**32)
+
+def sort(ip_net):
+    return ip_net.key_value()
+
 ddos_list = []
 
 while len(ddos_list) < 30:
@@ -20,5 +26,5 @@ while len(ddos_list) < 30:
     if rnet not in ddos_list and rnet.is_private == False:
         ddos_list.append(rnet)
 
-for net_ddos in sorted(ddos_list):
+for net_ddos in sorted(ddos_list, key = sort):
     print(net_ddos)
